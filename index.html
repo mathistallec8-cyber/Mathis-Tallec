@@ -414,7 +414,7 @@
 
                                 
     /* SCROLL REVEAL */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 900px) {
@@ -434,7 +434,7 @@
     }
   </style>
 </head>
-<body class="theme-blue">
+<body>
 
   <div class="theme-dot warm" onclick="setTheme('warm', this)" title="Ambre"></div>
   <div class="theme-dot green" onclick="setTheme('green', this)" title="Vert"></div>
@@ -668,19 +668,17 @@
 </footer>
 
 <script>
-      });
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
-
-  // FORM
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.btn-submit');
-    btn.textContent = 'Envoyé ✓';
-    btn.style.background = '#2D6A4F';
-    btn.style.color = 'white';
-    setTimeout(() => { btn.textContent = 'Envoyer →'; btn.style.background = ''; btn.style.color = ''; }, 3000);
-  }
 </script>
 </body>
 </html>
