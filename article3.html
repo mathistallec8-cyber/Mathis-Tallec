@@ -1,38 +1,150 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Community Manager d'un club de foot — Mathis Tallec</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <script>
+    (function() {
+      const t = localStorage.getItem('mt-theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --cream: #F7F4EF; --ink: #1A1A1A; --ink-light: #555; --rule: #DDD8CF; --accent: #2B4C8C; }
-    body { background: var(--cream); color: var(--ink); font-family: 'Inter', sans-serif; font-weight: 300; line-height: 1.8; }
-    nav { position: fixed; top: 0; left: 0; right: 0; padding: 1.2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(247,244,239,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); z-index: 100; }
+
+    :root {
+      --cream: #F7F4EF;
+      --ink: #1A1A1A;
+      --ink-light: #555;
+      --rule: #DDD8CF;
+      --accent: #2B4C8C;
+      --nav-bg: rgba(247, 244, 239, 0.95);
+      --body-text: #444;
+      --highlight-bg: #ffffff;
+    }
+    [data-theme="dark"] {
+      --cream: #111111;
+      --ink: #EDEBE6;
+      --ink-light: #888;
+      --rule: #2A2A2A;
+      --accent: #7090D9;
+      --nav-bg: rgba(17, 17, 17, 0.95);
+      --body-text: #AAAAAA;
+      --highlight-bg: #1A1A1A;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      animation: pageIn 0.4s ease forwards;
+    }
+    @keyframes pageIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* PROGRESS BAR */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: var(--accent);
+      z-index: 200;
+      transition: width 0.1s linear;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      padding: 1.2rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--nav-bg);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      z-index: 100;
+    }
     .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); text-decoration: none; }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
     .nav-back { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
     .nav-back:hover { color: var(--ink); }
+    .theme-btn {
+      background: none;
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s;
+      flex-shrink: 0;
+    }
+    .theme-btn:hover { border-color: var(--ink); }
+
+    /* ARTICLE */
     .article-wrap { max-width: 720px; margin: 0 auto; padding: 10rem 2rem 6rem; }
     .article-tag { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: block; }
     .article-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 1.5rem; }
     .article-meta { font-size: 0.8rem; color: var(--ink-light); letter-spacing: 0.05em; padding-bottom: 2rem; border-bottom: 1px solid var(--rule); margin-bottom: 3rem; }
-    .article-body h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; margin: 3rem 0 1rem; }
-    .article-body p { margin-bottom: 1.5rem; font-size: 1rem; color: #333; }
+    .article-body h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; margin: 3rem 0 1rem; color: var(--ink); }
+    .article-body p { margin-bottom: 1.5rem; font-size: 1rem; color: var(--body-text); }
     .article-body strong { font-weight: 500; color: var(--ink); }
     .article-body ul { margin: 1rem 0 1.5rem 1.5rem; }
-    .article-body li { margin-bottom: 0.6rem; font-size: 1rem; color: #333; }
-    .highlight-box { background: white; border-left: 3px solid var(--accent); padding: 1.5rem 2rem; margin: 2rem 0; }
-    .highlight-box p { margin: 0; font-size: 0.95rem; }
+    .article-body li { margin-bottom: 0.6rem; font-size: 1rem; color: var(--body-text); }
+    .highlight-box { background: var(--highlight-bg); border-left: 3px solid var(--accent); padding: 1.5rem 2rem; margin: 2rem 0; }
+    .highlight-box p { margin: 0; font-size: 0.95rem; color: var(--body-text); }
     .article-footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
     .btn-back { display: inline-block; padding: 0.8rem 1.8rem; border: 1px solid var(--ink); color: var(--ink); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, color 0.2s; }
-    .btn-back:hover { background: var(--ink); color: white; }
+    .btn-back:hover { background: var(--ink); color: var(--cream); }
+
+    /* BACK TO TOP */
+    #back-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      background: var(--ink);
+      color: var(--cream);
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.2s;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #back-top.visible { opacity: 1; pointer-events: auto; }
+    #back-top:hover { transform: translateY(-3px); }
+
+    @media (max-width: 600px) {
+      nav { padding: 1.2rem 1.2rem; }
+      .article-wrap { padding: 8rem 1.2rem 4rem; }
+    }
   </style>
 </head>
 <body>
+
+<div id="progress-bar"></div>
+
 <nav>
   <a href="index.html" class="nav-logo">MT.</a>
-  <a href="index.html#blog" class="nav-back">← Retour au blog</a>
+  <div class="nav-right">
+    <a href="index.html#blog" class="nav-back">← Retour au blog</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Basculer le thème">🌙</button>
+  </div>
 </nav>
 
 <div class="article-wrap">
@@ -72,5 +184,53 @@
     <span style="font-size:0.82rem; color: var(--ink-light);">Mathis Tallec · SDR @ Junto</span>
   </div>
 </div>
+
+<button id="back-top" aria-label="Retour en haut">↑</button>
+
+<script>
+  // THEME
+  const html = document.documentElement;
+  const themeBtn = document.getElementById('theme-toggle');
+  function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('mt-theme', theme);
+  }
+  themeBtn.addEventListener('click', () => {
+    applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+  applyTheme(html.getAttribute('data-theme'));
+
+  // READING PROGRESS
+  const progressBar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // BACK TO TOP
+  const backTop = document.getElementById('back-top');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  backTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // PAGE TRANSITIONS
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel')) {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.body.style.animation = 'none';
+        document.body.style.transition = 'opacity 0.25s ease';
+        document.body.style.opacity = '0';
+        setTimeout(() => { window.location.href = href; }, 260);
+      });
+    }
+  });
+</script>
 </body>
 </html>
