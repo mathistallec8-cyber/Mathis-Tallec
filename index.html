@@ -77,7 +77,7 @@
       font-size: 0.75rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--accent-color, var(--accent-blue));
+      color: var(--accent-blue);
       margin-bottom: 1.8rem;
     }
     .hero-name {
@@ -99,7 +99,7 @@
     .btn-primary {
       display: inline-block;
       padding: 0.85rem 2rem;
-      background: var(--accent-color, var(--accent-blue));
+      background: var(--accent-blue);
       color: white;
       font-size: 0.82rem;
       letter-spacing: 0.08em;
@@ -185,7 +185,7 @@
       color: rgba(255,255,255,0.7);
       padding: 0 3rem;
     }
-    .marquee-inner span.dot { color: var(--accent-color, var(--accent-blue)); padding: 0; }
+    .marquee-inner span.dot { color: var(--accent-blue); padding: 0; }
     @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
     /* SECTION COMMONS */
@@ -264,7 +264,7 @@
     }
     .timeline-role {
       font-size: 0.85rem;
-      color: var(--accent-color, var(--accent-blue));
+      color: var(--accent-blue);
       letter-spacing: 0.05em;
       margin-bottom: 0.7rem;
     }
@@ -296,7 +296,7 @@
       font-size: 0.7rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--accent-color, var(--accent-blue));
+      color: var(--accent-blue);
       margin-bottom: 1.2rem;
     }
     .blog-title {
@@ -408,42 +408,11 @@
     }
 
     /* COLOR THEMES */
-    body.theme-blue { --accent-color: var(--accent-blue); }
-    body.theme-warm { --accent-color: var(--accent-warm); }
-    body.theme-green { --accent-color: var(--accent-green); }
+    
+    
+    
 
-    /* THEME SWITCHER */
-    .theme-switcher {
-      position: fixed;
-      bottom: 2rem; right: 2rem;
-      display: flex; gap: 0.5rem;
-      z-index: 200;
-      background: white;
-      padding: 0.6rem;
-      border: 1px solid var(--rule);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    }
-    .theme-dot {
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: transform 0.2s;
-      border: 2px solid transparent;
-    }
-    .theme-dot:hover { transform: scale(1.2); }
-    .theme-dot.active { border-color: var(--ink); }
-    .theme-dot.blue { background: var(--accent-blue); }
-    .theme-dot.warm { background: var(--accent-warm); }
-    .theme-dot.green { background: var(--accent-green); }
-    .theme-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      display: flex; align-items: center;
-      padding: 0 0.3rem;
-    }
-
+                                
     /* SCROLL REVEAL */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -467,10 +436,6 @@
 </head>
 <body class="theme-blue">
 
-<!-- THEME SWITCHER -->
-<div class="theme-switcher">
-  <span class="theme-label">Thème</span>
-  <div class="theme-dot blue active" onclick="setTheme('blue', this)" title="Bleu"></div>
   <div class="theme-dot warm" onclick="setTheme('warm', this)" title="Ambre"></div>
   <div class="theme-dot green" onclick="setTheme('green', this)" title="Vert"></div>
 </div>
@@ -672,7 +637,7 @@
           <span class="contact-link-label">Téléphone</span>
           06 31 98 59 90
         </a>
-        <a href="https://linkedin.com" target="_blank" class="contact-link">
+        <a href="https://www.linkedin.com/in/mathis-tallec" target="_blank" class="contact-link">
           <span class="contact-link-label">LinkedIn</span>
           Mathis Tallec
         </a>
@@ -703,22 +668,7 @@
 </footer>
 
 <script>
-  // THEME SWITCHER
-  function setTheme(theme, el) {
-    document.body.className = 'theme-' + theme;
-    document.querySelectorAll('.theme-dot').forEach(d => d.classList.remove('active'));
-    el.classList.add('active');
-  }
-
-  // SCROLL REVEAL
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
+      });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
