@@ -678,17 +678,18 @@
         </a>
       </div>
     </div>
-<form class="contact-form reveal" action="https://formspree.io/f/mvkppddr" method="POST">      <div class="form-group">
+    <form class="contact-form reveal" action="https://formspree.io/f/mvkppddr" method="POST">
+      <div class="form-group">
         <label class="form-label">Votre nom</label>
-        <input type="text" class="form-input" placeholder="Jean Dupont">
+        <input type="text" name="nom" class="form-input" placeholder="Jean Dupont">
       </div>
       <div class="form-group">
         <label class="form-label">Votre email</label>
-        <input type="email" class="form-input" placeholder="jean@entreprise.com">
+        <input type="email" name="email" class="form-input" placeholder="jean@entreprise.com">
       </div>
       <div class="form-group">
         <label class="form-label">Message</label>
-        <textarea class="form-textarea" placeholder="Votre message..."></textarea>
+        <textarea name="message" class="form-textarea" placeholder="Votre message..."></textarea>
       </div>
       <button type="submit" class="btn-submit">Envoyer →</button>
     </form>
