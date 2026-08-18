@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mathis Tallec, SDR & Commercial B2B</title>
+  <title>Mathis Tallec,  SDR & Commercial B2B</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <script>
-    (function() {
-      const t = localStorage.getItem('mt-theme') || 'light';
-      document.documentElement.setAttribute('data-theme', t);
-    })();
-  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -23,28 +17,6 @@
       --accent-blue: #2B4C8C;
       --accent-warm: #C17F3D;
       --accent-green: #2D6A4F;
-      --nav-bg: rgba(247, 244, 239, 0.92);
-      --section-alt-bg: #ffffff;
-      --contact-bg: #1A1A1A;
-      --marquee-bg: #1A1A1A;
-      --card-hover-bg: rgba(255, 255, 255, 0.6);
-      --blog-hover-bg: rgba(255, 255, 255, 0.7);
-    }
-
-    [data-theme="dark"] {
-      --cream: #111111;
-      --ink: #EDEBE6;
-      --ink-light: #888;
-      --rule: #2A2A2A;
-      --accent-blue: #7090D9;
-      --accent-warm: #D4955A;
-      --accent-green: #3D8A65;
-      --nav-bg: rgba(17, 17, 17, 0.95);
-      --section-alt-bg: #1A1A1A;
-      --contact-bg: #000000;
-      --marquee-bg: #000000;
-      --card-hover-bg: rgba(255, 255, 255, 0.04);
-      --blog-hover-bg: rgba(255, 255, 255, 0.04);
     }
 
     html { scroll-behavior: smooth; }
@@ -56,12 +28,6 @@
       font-weight: 300;
       line-height: 1.7;
       min-height: 100vh;
-      animation: pageIn 0.4s ease forwards;
-    }
-
-    @keyframes pageIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to   { opacity: 1; transform: translateY(0); }
     }
 
     /* NAV */
@@ -69,7 +35,7 @@
       position: fixed; top: 0; left: 0; right: 0;
       padding: 1.4rem 3rem;
       display: flex; justify-content: space-between; align-items: center;
-      background: var(--nav-bg);
+      background: rgba(247, 244, 239, 0.92);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--rule);
       z-index: 100;
@@ -82,11 +48,6 @@
       color: var(--ink);
       text-decoration: none;
     }
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
       font-size: 0.82rem;
@@ -97,43 +58,6 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--ink); }
-
-    .theme-btn {
-      background: none;
-      border: 1px solid var(--rule);
-      color: var(--ink);
-      width: 34px;
-      height: 34px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: border-color 0.2s;
-      flex-shrink: 0;
-    }
-    .theme-btn:hover { border-color: var(--ink); }
-
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      flex-shrink: 0;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
-      background: var(--ink);
-      transition: transform 0.3s, opacity 0.3s;
-    }
-    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
 
     /* HERO */
     .hero {
@@ -195,7 +119,7 @@
       text-decoration: none;
       transition: background 0.2s, color 0.2s;
     }
-    .btn-secondary:hover { background: var(--ink); color: var(--cream); }
+    .btn-secondary:hover { background: var(--ink); color: white; }
 
     .hero-right {
       display: flex;
@@ -248,7 +172,7 @@
       padding: 0.8rem 0;
       overflow: hidden;
       white-space: nowrap;
-      background: var(--marquee-bg);
+      background: var(--ink);
     }
     .marquee-inner {
       display: inline-block;
@@ -293,15 +217,10 @@
       padding: 2.5rem;
       border-right: 1px solid var(--rule);
       border-bottom: 1px solid var(--rule);
-      transition: background 0.25s, box-shadow 0.25s;
-      position: relative;
+      transition: background 0.25s;
     }
     .expertise-item:nth-child(3n) { border-right: none; }
-    .expertise-item:hover {
-      background: var(--card-hover-bg);
-      box-shadow: 0 6px 24px rgba(43, 76, 140, 0.08);
-      z-index: 1;
-    }
+    .expertise-item:hover { background: rgba(255,255,255,0.6); }
     .expertise-icon {
       font-size: 1.4rem;
       margin-bottom: 1rem;
@@ -319,7 +238,7 @@
     }
 
     /* PARCOURS */
-    .parcours-section { background: var(--section-alt-bg); }
+    .parcours-section { background: white; }
     .timeline { display: flex; flex-direction: column; gap: 0; }
     .timeline-item {
       display: grid;
@@ -367,18 +286,12 @@
       border-right: 1px solid var(--rule);
       text-decoration: none;
       color: inherit;
-      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+      transition: background 0.25s;
       display: flex;
       flex-direction: column;
-      position: relative;
     }
     .blog-card:last-child { border-right: none; }
-    .blog-card:hover {
-      background: var(--blog-hover-bg);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-      z-index: 1;
-    }
+    .blog-card:hover { background: rgba(255,255,255,0.7); }
     .blog-tag {
       font-size: 0.7rem;
       letter-spacing: 0.15em;
@@ -410,7 +323,7 @@
 
     /* CONTACT */
     .contact-section {
-      background: var(--contact-bg);
+      background: var(--ink);
       color: white;
     }
     .contact-section .section-title { color: white; }
@@ -467,12 +380,11 @@
       width: 100%;
     }
     .form-input:focus, .form-textarea:focus { border-color: rgba(255,255,255,0.5); }
-    .form-input.error, .form-textarea.error { border-color: #E05555; }
     .form-textarea { height: 120px; resize: none; }
     .btn-submit {
       padding: 0.9rem 2rem;
       background: white;
-      color: #1A1A1A;
+      color: var(--ink);
       font-size: 0.82rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -480,56 +392,8 @@
       cursor: pointer;
       align-self: flex-start;
       transition: opacity 0.2s;
-      font-family: 'Inter', sans-serif;
     }
     .btn-submit:hover { opacity: 0.85; }
-    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
-
-    /* TOAST */
-    .toast {
-      position: fixed;
-      bottom: 5.5rem;
-      right: 2rem;
-      padding: 1rem 1.5rem;
-      background: var(--ink);
-      color: var(--cream);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.02em;
-      z-index: 300;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.3s, transform 0.3s;
-      pointer-events: none;
-      max-width: 300px;
-      border-left: 3px solid transparent;
-    }
-    .toast.show { opacity: 1; transform: translateY(0); }
-    .toast.error { border-left-color: #E05555; }
-    .toast.success { border-left-color: var(--accent-green); }
-
-    /* BACK TO TOP */
-    #back-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 44px;
-      height: 44px;
-      background: var(--ink);
-      color: var(--cream);
-      border: none;
-      cursor: pointer;
-      font-size: 1.1rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s, transform 0.2s;
-      z-index: 99;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #back-top.visible { opacity: 1; pointer-events: auto; }
-    #back-top:hover { transform: translateY(-3px); }
 
     /* FOOTER */
     footer {
@@ -543,91 +407,62 @@
       letter-spacing: 0.05em;
     }
 
+    /* COLOR THEMES */
+    
+    
+    
+
+                                
     /* SCROLL REVEAL */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 1.2rem 1.5rem; }
-
-      .nav-hamburger { display: flex; }
-
-      .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--nav-bg);
-        backdrop-filter: blur(8px);
-        border-bottom: 1px solid var(--rule);
-        flex-direction: column;
-        gap: 0;
-        padding: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.35s ease;
-      }
-      .nav-links.open { max-height: 280px; }
-      .nav-links li { border-bottom: 1px solid var(--rule); }
-      .nav-links a { display: block; padding: 1rem 1.5rem; }
-
       .hero { grid-template-columns: 1fr; }
       .hero-left { padding: 3rem 1.5rem; border-right: none; border-bottom: 1px solid var(--rule); }
       .hero-right { padding: 3rem 1.5rem; }
-      .hero-photo-wrap { width: 100%; max-width: 300px; height: 280px; }
-      .hero-stats { width: 100%; max-width: 300px; }
-
       section { padding: 4rem 1.5rem; }
-
       .expertise-grid { grid-template-columns: 1fr; }
       .expertise-item { border-right: none; }
       .expertise-item:nth-child(3n) { border-right: none; }
-
       .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
-
       .blog-grid { grid-template-columns: 1fr; }
       .blog-card { border-right: none; border-bottom: 1px solid var(--rule); }
-      .blog-card:hover { transform: none; }
-
       .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
-
-      .toast { right: 1rem; left: 1rem; max-width: none; }
-      #back-top { bottom: 1.5rem; right: 1rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
 </head>
 <body>
 
+  <div class="theme-dot warm" onclick="setTheme('warm', this)" title="Ambre"></div>
+  <div class="theme-dot green" onclick="setTheme('green', this)" title="Vert"></div>
+</div>
+
+<!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">MT.</a>
-  <div class="nav-right">
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#expertise">Expertise</a></li>
-      <li><a href="#parcours">Parcours</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="theme-btn" id="theme-toggle" aria-label="Basculer le thème">🌙</button>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+  <a href="#" class="nav-logo">MT.</a>
+  <ul class="nav-links">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#parcours">Parcours</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow reveal">SDR · Junto · Rocket School MSc</p>
+    <p class="hero-eyebrow reveal">Business Developer · SDR B2B · Prospection Outbound</p>
     <h1 class="hero-name reveal">Mathis<br>Tallec.</h1>
     <p class="hero-tagline reveal">
-      Commercial B2B spécialisé en prospection outbound. Je transforme les prospects froids en opportunités concrètes, avec méthode, curiosité et ténacité.
+      Commercial B2B spécialisé en prospection outbound. Je transforme les prospects froids en opportunités concrètes,  avec méthode, curiosité et ténacité.
     </p>
     <div class="hero-ctas reveal">
       <a href="#contact" class="btn-primary">Me contacter</a>
       <a href="#parcours" class="btn-secondary">Mon parcours</a>
+      <a href="CV_Mathis_Tallec.pdf" download class="btn-secondary">Télécharger mon CV</a>
     </div>
   </div>
   <div class="hero-right">
@@ -636,20 +471,20 @@
     </div>
     <div class="hero-stats reveal">
       <div class="stat">
-        <div class="stat-num">SDR</div>
-        <div class="stat-label">Junto</div>
+        <div class="stat-num">15K+</div>
+        <div class="stat-label">Appels réalisés</div>
       </div>
       <div class="stat">
-        <div class="stat-num">MSc</div>
-        <div class="stat-label">Rocket School</div>
+        <div class="stat-num">68</div>
+        <div class="stat-label">RDV générés</div>
       </div>
       <div class="stat">
-        <div class="stat-num">B2B</div>
-        <div class="stat-label">Outbound</div>
+        <div class="stat-num">46%</div>
+        <div class="stat-label">Taux de conversion</div>
       </div>
       <div class="stat">
-        <div class="stat-num" data-count="3" data-suffix="+">3+</div>
-        <div class="stat-label">Expériences</div>
+        <div class="stat-num">40</div>
+        <div class="stat-label">Contrats Vérisure</div>
       </div>
     </div>
   </div>
@@ -662,14 +497,14 @@
     <span>Cold Outreach</span><span class="dot">·</span>
     <span>Qualification Leads</span><span class="dot">·</span>
     <span>CRM</span><span class="dot">·</span>
-    <span>Négociation</span><span class="dot">·</span>
+    <span>Negociation</span><span class="dot">·</span>
     <span>Relation Client</span><span class="dot">·</span>
     <span>Développement Commercial</span><span class="dot">·</span>
     <span>Prospection B2B</span><span class="dot">·</span>
     <span>Cold Outreach</span><span class="dot">·</span>
     <span>Qualification Leads</span><span class="dot">·</span>
     <span>CRM</span><span class="dot">·</span>
-    <span>Négociation</span><span class="dot">·</span>
+    <span>Negociation</span><span class="dot">·</span>
     <span>Relation Client</span><span class="dot">·</span>
     <span>Développement Commercial</span><span class="dot">·</span>
   </div>
@@ -723,23 +558,23 @@
   </div>
   <div class="timeline">
     <div class="timeline-item reveal">
-      <div class="timeline-date">Oct. 2025, Aujourd'hui</div>
+      <div class="timeline-date">Oct. 2025,  Aujourd'hui</div>
       <div>
         <div class="timeline-company">Junto</div>
-        <div class="timeline-role">SDR, Agence Marketing 360°</div>
+        <div class="timeline-role">SDR,  Agence Marketing 360°</div>
         <p class="timeline-desc">Prospection B2B outbound pour une agence marketing full-service. Identification de cibles, séquences multicanal, qualification des opportunités commerciales.</p>
       </div>
     </div>
     <div class="timeline-item reveal">
-      <div class="timeline-date">Oct. 2024, Août 2025</div>
+      <div class="timeline-date">Oct. 2024,  Août 2025</div>
       <div>
         <div class="timeline-company">Vérisure Brest</div>
         <div class="timeline-role">Alternant Expert Sécurité</div>
-        <p class="timeline-desc">Prospection terrain B2C, vente de systèmes de sécurité, qualification des prospects et gestion du cycle de vente complet.</p>
+        <p class="timeline-desc">40 contrats signés en 10 mois, panier moyen 750€. Prospection terrain B2C/B2B, cycle de vente complet de la qualification à la signature.</p>
       </div>
     </div>
     <div class="timeline-item reveal">
-      <div class="timeline-date">Nov., Déc. 2023</div>
+      <div class="timeline-date">Nov.,  Déc. 2023</div>
       <div>
         <div class="timeline-company">CCI Formation Saint-Brieuc</div>
         <div class="timeline-role">Stagiaire Commercial</div>
@@ -747,7 +582,7 @@
       </div>
     </div>
     <div class="timeline-item reveal">
-      <div class="timeline-date">Mai, Juin 2023</div>
+      <div class="timeline-date">Mai,  Juin 2023</div>
       <div>
         <div class="timeline-company">Volkswagen Saint-Brieuc</div>
         <div class="timeline-role">Stagiaire Commercial Automobile</div>
@@ -767,13 +602,13 @@
     <a href="article1.html" class="blog-card">
       <div class="blog-tag">Prospection</div>
       <h3 class="blog-title">Ce que m'a appris la prospection terrain chez Vérisure</h3>
-      <p class="blog-excerpt">Du porte-à-porte au cold email B2B, les réflexes que j'ai développés sur le terrain et qui changent tout dans la prospection.</p>
+      <p class="blog-excerpt">Du porte-à-porte au cold email B2B,  les réflexes que j'ai développés sur le terrain et qui changent tout dans la prospection.</p>
       <span class="blog-arrow">Lire →</span>
     </a>
     <a href="article2.html" class="blog-card">
       <div class="blog-tag">Outils</div>
       <h3 class="blog-title">Comment j'utilise un CRM pour structurer ma prospection</h3>
-      <p class="blog-excerpt">Pipeline, séquences, relances, ma méthode concrète pour ne jamais laisser un lead sans suite et suivre mes KPIs au quotidien.</p>
+      <p class="blog-excerpt">Pipeline, séquences, relances,  ma méthode concrète pour ne jamais laisser un lead sans suite et suivre mes KPIs au quotidien.</p>
       <span class="blog-arrow">Lire →</span>
     </a>
     <a href="article3.html" class="blog-card">
@@ -809,18 +644,18 @@
         </a>
       </div>
     </div>
-    <form class="contact-form reveal" id="contact-form" action="https://formspree.io/f/mvkppddr" method="POST">
+    <form class="contact-form reveal" action="https://formspree.io/f/mvkppddr" method="POST">
       <div class="form-group">
-        <label class="form-label" for="f-nom">Votre nom</label>
-        <input id="f-nom" type="text" name="nom" class="form-input" placeholder="Jean Dupont">
+        <label class="form-label">Votre nom</label>
+        <input type="text" name="nom" class="form-input" placeholder="Jean Dupont">
       </div>
       <div class="form-group">
-        <label class="form-label" for="f-email">Votre email</label>
-        <input id="f-email" type="email" name="email" class="form-input" placeholder="jean@entreprise.com">
+        <label class="form-label">Votre email</label>
+        <input type="email" name="email" class="form-input" placeholder="jean@entreprise.com">
       </div>
       <div class="form-group">
-        <label class="form-label" for="f-message">Message</label>
-        <textarea id="f-message" name="message" class="form-textarea" placeholder="Votre message..."></textarea>
+        <label class="form-label">Message</label>
+        <textarea name="message" class="form-textarea" placeholder="Votre message..."></textarea>
       </div>
       <button type="submit" class="btn-submit">Envoyer →</button>
     </form>
@@ -833,167 +668,18 @@
   <span>SDR · Junto · MSc Rocket School</span>
 </footer>
 
-<!-- TOAST -->
-<div class="toast" id="toast" role="alert" aria-live="polite"></div>
-
-<!-- BACK TO TOP -->
-<button id="back-top" aria-label="Retour en haut">↑</button>
-
 <script>
-  // THEME
-  const html = document.documentElement;
-  const themeBtn = document.getElementById('theme-toggle');
-
-  function applyTheme(theme) {
-    html.setAttribute('data-theme', theme);
-    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
-    localStorage.setItem('mt-theme', theme);
-  }
-
-  themeBtn.addEventListener('click', () => {
-    applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-  });
-
-  applyTheme(html.getAttribute('data-theme'));
-
-  // HAMBURGER
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('nav-links');
-
-  hamburger.addEventListener('click', () => {
-    const isOpen = hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', isOpen);
-  });
-
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    });
-  });
-
   // SCROLL REVEAL
   const reveals = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
         setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        revealObserver.unobserve(entry.target);
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
-  reveals.forEach(el => revealObserver.observe(el));
-
-  // ANIMATED COUNTER
-  function animateCounter(el) {
-    const target = parseInt(el.getAttribute('data-count'), 10);
-    const suffix = el.getAttribute('data-suffix') || '';
-    const duration = 1200;
-    const startTime = performance.now();
-    function update(now) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(eased * target) + suffix;
-      if (progress < 1) requestAnimationFrame(update);
-    }
-    requestAnimationFrame(update);
-  }
-
-  const statsEl = document.querySelector('.hero-stats');
-  if (statsEl) {
-    const statsObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        document.querySelectorAll('[data-count]').forEach(animateCounter);
-        statsObserver.disconnect();
-      }
-    }, { threshold: 0.5 });
-    statsObserver.observe(statsEl);
-  }
-
-  // PAGE TRANSITIONS
-  document.querySelectorAll('a[href]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && !href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel')) {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        document.body.style.animation = 'none';
-        document.body.style.transition = 'opacity 0.25s ease';
-        document.body.style.opacity = '0';
-        setTimeout(() => { window.location.href = href; }, 260);
-      });
-    }
-  });
-
-  // CONTACT FORM
-  const form = document.getElementById('contact-form');
-  const toast = document.getElementById('toast');
-
-  function showToast(msg, type) {
-    toast.textContent = msg;
-    toast.className = 'toast ' + type + ' show';
-    clearTimeout(toast._timer);
-    toast._timer = setTimeout(() => { toast.className = 'toast'; }, 4500);
-  }
-
-  if (form) {
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-
-      const nomEl = document.getElementById('f-nom');
-      const emailEl = document.getElementById('f-email');
-      const msgEl = document.getElementById('f-message');
-      [nomEl, emailEl, msgEl].forEach(el => el.classList.remove('error'));
-
-      const nom = nomEl.value.trim();
-      const email = emailEl.value.trim();
-      const message = msgEl.value.trim();
-
-      let valid = true;
-      if (!nom) { nomEl.classList.add('error'); valid = false; }
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { emailEl.classList.add('error'); valid = false; }
-      if (!message) { msgEl.classList.add('error'); valid = false; }
-
-      if (!valid) {
-        showToast('Veuillez remplir correctement tous les champs.', 'error');
-        return;
-      }
-
-      const btn = form.querySelector('.btn-submit');
-      btn.textContent = 'Envoi en cours...';
-      btn.disabled = true;
-
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-        if (res.ok) {
-          showToast('Message envoyé ! Je vous répondrai rapidement.', 'success');
-          form.reset();
-        } else {
-          showToast('Une erreur est survenue. Réessayez.', 'error');
-        }
-      } catch {
-        showToast('Erreur réseau. Vérifiez votre connexion.', 'error');
-      } finally {
-        btn.textContent = 'Envoyer →';
-        btn.disabled = false;
-      }
-    });
-  }
-
-  // BACK TO TOP
-  const backTop = document.getElementById('back-top');
-  window.addEventListener('scroll', () => {
-    backTop.classList.toggle('visible', window.scrollY > 400);
-  }, { passive: true });
-  backTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  reveals.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
