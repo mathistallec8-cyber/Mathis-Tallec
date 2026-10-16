@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Brief · Kit SDR · Mathis Tallec</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14213D;--lin:#F5EFE3;--card:#FBF8F1;--sable:#E5D9C3;--bleu:#3A6EA5;--bleu-clair:#8DB3DC;--txt2:#4A5670;--muted:#7A849A;--ok:#1F7A4D;--err:#B3261E}
+*{box-sizing:border-box;margin:0}
+body{background:var(--lin);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;font-size:17px;line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding:40px 16px 80px}
+header{background:var(--ink);color:var(--lin);border-radius:20px;padding:40px 32px;margin-bottom:32px}
+.eyebrow{font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--bleu)}
+header .eyebrow{color:var(--bleu-clair)}
+h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(30px,6vw,44px);line-height:1.08;letter-spacing:-.02em;margin:10px 0 14px}
+header p{color:#C3CEE0}
+h2{font-family:'Archivo',sans-serif;font-weight:700;font-size:22px;margin:4px 0 6px}
+.card{background:var(--card);border:1px solid var(--sable);border-radius:18px;padding:24px;margin-bottom:18px}
+.hint{color:var(--txt2);font-size:15px;margin-bottom:14px}
+label{display:block;font-weight:600;font-size:15px;margin:14px 0 6px}
+label .opt{font-weight:400;color:var(--muted)}
+input,textarea,select{width:100%;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--sable);border-radius:10px;padding:11px 12px}
+textarea{min-height:96px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--bleu);outline-offset:1px;border-color:var(--bleu)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.persona{border-top:1px dashed var(--sable);padding-top:8px;margin-top:14px}
+.persona:first-of-type{border-top:none;margin-top:0;padding-top:0}
+.persona b{font-size:14px;color:var(--bleu);letter-spacing:.08em;text-transform:uppercase}
+.err{color:var(--err);font-size:14px;margin-top:6px;display:none}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+button{font:inherit;font-weight:600;font-size:16px;border-radius:999px;padding:14px 26px;cursor:pointer;border:1px solid var(--ink)}
+.primary{background:var(--bleu);border-color:var(--bleu);color:#fff}
+.primary:hover{background:#2F5C8C}
+.ghost{background:transparent;color:var(--ink)}
+#status{margin-top:16px;font-size:15px;color:var(--ok);min-height:1.5em}
+footer{margin-top:40px;color:var(--muted);font-size:14px;text-align:center}
+footer a{color:var(--bleu)}
+@media (max-width:560px){.row{grid-template-columns:1fr}header{padding:28px 20px}.card{padding:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<p class="eyebrow">Kit SDR · brief avant la formation</p>
+<h1>10 minutes pour des jeux de rôle qui sonnent comme vos vrais appels.</h1>
+<p>Vos réponses servent à construire les fiches prospects de la séance. Rien n’est partagé en dehors de cette préparation.</p>
+</header>
+
+<form id="f" novalidate>
+<div class="card">
+<p class="eyebrow">Vous</p>
+<h2>Votre équipe</h2>
+<div class="row">
+<div><label for="entreprise">Entreprise</label><input id="entreprise" name="Entreprise" required autocomplete="organization"><p class="err" data-for="entreprise">Indiquez le nom de l’entreprise.</p></div>
+<div><label for="nom">Votre nom</label><input id="nom" name="Nom" required autocomplete="name"><p class="err" data-for="nom">Indiquez votre nom.</p></div>
+</div>
+<div class="row">
+<div><label for="nbsdr">Nombre de SDR</label><input id="nbsdr" name="Nombre de SDR" inputmode="numeric" placeholder="3"></div>
+<div><label for="crm">CRM utilisé</label><input id="crm" name="CRM" placeholder="HubSpot, Pipedrive…"></div>
+</div>
+</div>
+
+<div class="card">
+<p class="eyebrow">Question 1</p>
+<h2>Vos 2 ou 3 profils cibles</h2>
+<p class="hint">Qui vos SDR appellent, et ce qui les fait bouger.</p>
+<div class="persona"><b>Profil 1</b>
+<div class="row"><div><label for="p1poste">Poste</label><input id="p1poste" name="Profil 1 · poste" placeholder="Directeur des opérations" required><p class="err" data-for="p1poste">Décrivez au moins un profil.</p></div><div><label for="p1taille">Taille d’entreprise</label><input id="p1taille" name="Profil 1 · taille" placeholder="50 à 200 salariés"></div></div>
+<label for="p1moteur">Ce qui le fait bouger</label><input id="p1moteur" name="Profil 1 · déclencheur" placeholder="Une ouverture de site, une levée, un recrutement…"></div>
+<div class="persona"><b>Profil 2 <span class="opt">(facultatif)</span></b>
+<div class="row"><div><label for="p2poste">Poste</label><input id="p2poste" name="Profil 2 · poste"></div><div><label for="p2taille">Taille d’entreprise</label><input id="p2taille" name="Profil 2 · taille"></div></div>
+<label for="p2moteur">Ce qui le fait bouger</label><input id="p2moteur" name="Profil 2 · déclencheur"></div>
+<div class="persona"><b>Profil 3 <span class="opt">(facultatif)</span></b>
+<div class="row"><div><label for="p3poste">Poste</label><input id="p3poste" name="Profil 3 · poste"></div><div><label for="p3taille">Taille d’entreprise</label><input id="p3taille" name="Profil 3 · taille"></div></div>
+<label for="p3moteur">Ce qui le fait bouger</label><input id="p3moteur" name="Profil 3 · déclencheur"></div>
+</div>
+
+<div class="card">
+<p class="eyebrow">Question 2</p>
+<h2>Les 3 objections les plus fréquentes</h2>
+<p class="hint">Mot pour mot, comme vos SDR les entendent.</p>
+<label for="o1">Objection 1</label><input id="o1" name="Objection 1" placeholder="« Envoyez-moi un mail »" required><p class="err" data-for="o1">Indiquez au moins une objection.</p>
+<label for="o2">Objection 2</label><input id="o2" name="Objection 2">
+<label for="o3">Objection 3</label><input id="o3" name="Objection 3">
+</div>
+
+<div class="card">
+<p class="eyebrow">Question 3</p>
+<h2>Un appel qui a mal tourné</h2>
+<p class="hint">À quel moment ça a basculé, et pourquoi selon vous.</p>
+<label for="rate">Racontez en quelques lignes <span class="opt">(facultatif)</span></label><textarea id="rate" name="Appel raté"></textarea>
+</div>
+
+<div class="card">
+<p class="eyebrow">Question 4</p>
+<h2>Des enregistrements d’appels ?</h2>
+<p class="hint">Un ou deux suffisent, avec l’accord des personnes enregistrées.</p>
+<label for="enr">Vous en avez ?</label>
+<select id="enr" name="Enregistrements"><option value="">Choisir</option><option>Oui, je peux en partager</option><option>Oui, mais pas partageables</option><option>Non</option></select>
+<label for="lien">Lien de partage <span class="opt">(facultatif)</span></label><input id="lien" name="Lien enregistrements" type="url" placeholder="https://…">
+</div>
+
+<div class="card">
+<p class="eyebrow">Pour finir</p>
+<h2>La priorité de votre équipe</h2>
+<label for="prio">Ce que vous voulez améliorer en premier</label>
+<select id="prio" name="Priorité"><option value="">Choisir</option><option>Passer le barrage des 30 premières secondes</option><option>Traiter les objections</option><option>Creuser le besoin</option><option>Transformer les conversations en RDV</option><option>Mieux remplir le CRM</option></select>
+<label for="libre">Autre chose à savoir ? <span class="opt">(facultatif)</span></label><textarea id="libre" name="Remarques"></textarea>
+</div>
+
+<div class="actions">
+<button type="submit" class="primary">Envoyer mes réponses</button>
+<button type="button" class="ghost" id="copy">Copier mes réponses</button>
+</div>
+<p id="status" role="status" aria-live="polite"></p>
+</form>
+
+<footer>Mathis Tallec · <a href="mailto:mathistallec8@gmail.com">mathistallec8@gmail.com</a> · <a href="offre.html">Voir l’offre</a></footer>
+</div>
+
+<script>
+(function(){
+var TO="mathistallec8@gmail.com", KEY="brief-kit-sdr";
+var f=document.getElementById("f"), st=document.getElementById("status");
+function fields(){return Array.prototype.slice.call(f.querySelectorAll("input,textarea,select"));}
+try{var saved=JSON.parse(localStorage.getItem(KEY)||"{}");fields().forEach(function(el){if(saved[el.id])el.value=saved[el.id];});}catch(e){}
+f.addEventListener("input",function(e){var err=f.querySelector('.err[data-for="'+e.target.id+'"]');if(err)err.style.display="none";try{var d={};fields().forEach(function(el){d[el.id]=el.value;});localStorage.setItem(KEY,JSON.stringify(d));}catch(x){}});
+function check(){var ok=true,first=null;f.querySelectorAll("[required]").forEach(function(el){var bad=!el.value.trim();var err=f.querySelector('.err[data-for="'+el.id+'"]');if(err)err.style.display=bad?"block":"none";if(bad){ok=false;if(!first)first=el;}});if(first)first.focus();return ok;}
+function text(){return fields().filter(function(el){return el.value.trim();}).map(function(el){return el.name+" : "+el.value.trim();}).join("\n");}
+f.addEventListener("submit",function(e){e.preventDefault();if(!check()){st.style.color="var(--err)";st.textContent="Il manque quelques réponses, elles sont signalées en rouge.";return;}
+var ent=document.getElementById("entreprise").value.trim();
+var url="mailto:"+TO+"?subject="+encodeURIComponent("Brief Kit SDR · "+ent)+"&body="+encodeURIComponent(text());
+window.location.href=url;st.style.color="var(--ok)";st.textContent="Votre messagerie s’ouvre avec vos réponses : il ne reste qu’à cliquer sur Envoyer. Rien ne s’ouvre ? Utilisez « Copier mes réponses » et collez-les dans un mail à "+TO+".";});
+document.getElementById("copy").addEventListener("click",function(){var t=text();if(!t){st.style.color="var(--err)";st.textContent="Le formulaire est encore vide.";return;}
+function done(){st.style.color="var(--ok)";st.textContent="Réponses copiées. Collez-les dans un mail à "+TO+".";}
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fallback(t);done();});}else{fallback(t);done();}});
+function fallback(t){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");}catch(e){}document.body.removeChild(a);}
+})();
+</script>
+</body>
+</html>
