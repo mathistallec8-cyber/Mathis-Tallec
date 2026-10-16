@@ -165,6 +165,67 @@
       background: var(--blue);
     }
 
+    /* ── CAPTURES ── */
+    .shots { display: grid; gap: 0.6rem; margin-bottom: 1.6rem; }
+    .shots-2 { grid-template-columns: 1fr 1fr; }
+    .shot {
+      display: block;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--linen);
+      cursor: zoom-in;
+    }
+    .shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top left;
+      transition: transform 0.3s;
+    }
+    .shot:hover img { transform: scale(1.03); }
+    .shot-hint {
+      position: absolute; right: 8px; bottom: 8px;
+      background: var(--ink);
+      color: var(--linen);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+    }
+    .price .shot { border-color: rgba(141, 179, 220, 0.35); margin-bottom: 2rem; max-width: 30rem; }
+    .price .shot img { aspect-ratio: 16 / 9; }
+
+    .lightbox {
+      border: none;
+      padding: 0;
+      background: transparent;
+      max-width: min(1200px, 94vw);
+      max-height: 92vh;
+      margin: auto;
+    }
+    .lightbox::backdrop { background: rgba(20, 33, 61, 0.88); }
+    .lightbox img {
+      display: block;
+      max-width: 100%;
+      max-height: 84vh;
+      border-radius: 12px;
+    }
+    .lightbox-close {
+      display: block;
+      margin: 0 0 0.6rem auto;
+      background: var(--linen);
+      color: var(--ink);
+      border: none;
+      border-radius: 999px;
+      padding: 0.45rem 1rem;
+      font: 600 0.9rem 'DM Sans', sans-serif;
+      cursor: pointer;
+    }
+
     /* ── MÉTHODE ── */
     .steps {
       list-style: none;
@@ -447,6 +508,14 @@
       <div class="grid-3">
         <article class="card">
           <span class="num" aria-hidden="true">01</span>
+          <div class="shots shots-2">
+            <a class="shot" href="img/copilote-appel.png" data-zoom aria-label="Agrandir la capture : le script affiché pendant l'appel">
+              <img src="img/copilote-appel.png" alt="Copilote pendant un appel : la question à poser, les réponses possibles et les répliques aux objections" width="1440" height="900" loading="lazy">
+            </a>
+            <a class="shot" href="img/copilote-hubspot.png" data-zoom aria-label="Agrandir la capture : la fin d'appel et la mise à jour HubSpot">
+              <img src="img/copilote-hubspot.png" alt="Fin d'appel dans le copilote : l'issue choisie et les champs HubSpot mis à jour" width="1440" height="750" loading="lazy">
+            </a>
+          </div>
           <h3>Copilote d'appel</h3>
           <ul>
             <li>Le script s'affiche pendant l'appel et suit la conversation.</li>
@@ -456,6 +525,12 @@
         </article>
         <article class="card">
           <span class="num" aria-hidden="true">02</span>
+          <div class="shots">
+            <a class="shot" href="img/playbook-framework.png" data-zoom aria-label="Agrandir la capture : une slide du playbook">
+              <img src="img/playbook-framework.png" alt="Slide du playbook : le déroulé de l'appel en six étapes, de l'ouverture à la proposition" width="1440" height="810" loading="lazy">
+              <span class="shot-hint" aria-hidden="true">Agrandir</span>
+            </a>
+          </div>
           <h3>Playbook SDR personnalisé</h3>
           <p>Une trentaine de slides à votre nom :</p>
           <ul>
@@ -580,6 +655,10 @@
           <h2 id="prix-titre">Un forfait. Tout compris.</h2>
           <p class="price-amount">À partir de [___] €</p>
           <p class="price-note">Selon la taille de l'équipe. Devis clair après l'appel de cadrage.</p>
+          <a class="shot" href="img/playbook-cover.png" data-zoom aria-label="Agrandir la couverture du playbook">
+            <img src="img/playbook-cover.png" alt="Couverture du playbook SDR, personnalisée au nom du client" width="1440" height="810" loading="lazy">
+            <span class="shot-hint" aria-hidden="true">Agrandir</span>
+          </a>
           <a class="btn btn-light" href="mailto:mathistallec8@gmail.com?subject=Kit%20SDR%20%E2%80%93%20R%C3%A9server%2020%20min">Réserver 20 min</a>
         </div>
         <div>
@@ -645,6 +724,31 @@
     </div>
   </div>
 </footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Capture agrandie">
+  <button class="lightbox-close" type="button">Fermer ✕</button>
+  <img alt="">
+</dialog>
+
+<script>
+  // Vignettes : ouvre la capture en grand. Sans JS, le lien ouvre l'image seule.
+  (function () {
+    var box = document.getElementById('lightbox');
+    if (!box || typeof box.showModal !== 'function') return;
+    var big = box.querySelector('img');
+    document.querySelectorAll('[data-zoom]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var thumb = link.querySelector('img');
+        big.src = link.getAttribute('href');
+        big.alt = thumb ? thumb.alt : '';
+        box.showModal();
+      });
+    });
+    box.querySelector('.lightbox-close').addEventListener('click', function () { box.close(); });
+    box.addEventListener('click', function (e) { if (e.target === box) box.close(); });
+  })();
+</script>
 
 </body>
 </html>
