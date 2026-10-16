@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Kit SDR · Mathis Tallec</title>
+  <meta name="description" content="Copilote d'appel branché à votre CRM, playbook SDR à votre nom et formation terrain pour startups B2B.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --linen: #F5EFE3;
+      --card: #FBF8F1;
+      --border: #E5D9C3;
+      --ink: #14213D;
+      --ink-soft: #4A5670;
+      --blue: #3A6EA5;
+      --blue-light: #8DB3DC;
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--linen);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+    h3 { font-weight: 700; }
+
+    a { color: var(--blue); }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+
+    .label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.95rem 1.7rem;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .btn:hover { background: #2F5C8C; transform: translateY(-1px); }
+    .btn-light { background: var(--blue-light); color: var(--ink); }
+    .btn-light:hover { background: #A6C4E5; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(245, 239, 227, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem;
+      padding-top: 0.9rem; padding-bottom: 0.9rem;
+    }
+    .nav-logo {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    nav .btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+
+    /* ── HERO ── */
+    .hero { padding: 2rem 0 0; }
+    .hero-box {
+      background: var(--ink);
+      color: var(--linen);
+      border-radius: 20px;
+      padding: 5.5rem 4rem;
+    }
+    .hero-box .label { color: var(--blue-light); }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5.2vw, 3.9rem);
+      max-width: 16ch;
+      margin-bottom: 1.5rem;
+    }
+    .hero-sub {
+      font-size: 1.2rem;
+      max-width: 40rem;
+      color: #DCD6CA;
+      margin-bottom: 2.5rem;
+    }
+    .hero-sub strong { color: var(--linen); font-weight: 600; }
+
+    /* ── SECTIONS ── */
+    section { padding: 6.5rem 0 0; }
+    .section-head { max-width: 44rem; margin-bottom: 3rem; }
+    .section-head h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 0.9rem; }
+    .section-head p { color: var(--ink-soft); font-size: 1.1rem; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.2rem;
+    }
+    .card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; }
+    .card p, .card li { color: var(--ink-soft); }
+    .card .num {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--blue);
+      display: block;
+      margin-bottom: 1.2rem;
+    }
+
+    .card ul { list-style: none; display: grid; gap: 0.6rem; margin-top: 0.4rem; }
+    .card li { padding-left: 1.3rem; position: relative; }
+    .card li::before {
+      content: ""; position: absolute; left: 0; top: 0.65em;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--blue);
+    }
+
+    /* ── MÉTHODE ── */
+    .steps {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.8rem;
+    }
+    .step-num {
+      display: flex; align-items: center; justify-content: center;
+      width: 2.6rem; height: 2.6rem;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--linen);
+      font-family: 'Archivo', sans-serif;
+      font-weight: 800;
+      margin-bottom: 1.4rem;
+    }
+    .step h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .step .duration {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+    .step p { color: var(--ink-soft); margin-top: 0.6rem; font-size: 0.98rem; }
+
+    /* ── QUI JE SUIS ── */
+    .about {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem;
+    }
+    .about img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 15%;
+      border-radius: var(--radius);
+      display: block;
+    }
+    .about h2 { font-size: clamp(1.8rem, 3.6vw, 2.4rem); margin-bottom: 1rem; }
+    .about-text { color: var(--ink-soft); font-size: 1.1rem; margin-bottom: 2rem; max-width: 36rem; }
+    .stats { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .stat-num {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 800;
+      font-size: 2.3rem;
+      line-height: 1;
+      color: var(--blue);
+    }
+    .stat-label { font-size: 0.92rem; color: var(--ink-soft); margin-top: 0.4rem; }
+
+    /* ── CAS CLIENT ── */
+    .case {
+      background: var(--card);
+      border: 2px dashed var(--blue);
+      border-radius: 20px;
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .case h3 { font-size: 1.5rem; margin-bottom: 0.4rem; }
+    .case-metric {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 800;
+      font-size: 1.9rem;
+      color: var(--blue);
+      margin-top: 1rem;
+    }
+    .case-metric-label { color: var(--ink-soft); font-size: 0.95rem; }
+    .case blockquote {
+      font-size: 1.3rem;
+      line-height: 1.5;
+      border-left: 4px solid var(--blue-light);
+      padding-left: 1.5rem;
+    }
+    .case figcaption { margin-top: 1rem; color: var(--ink-soft); font-size: 0.95rem; }
+    .ph { background: #E4ECF5; color: var(--ink); border-radius: 6px; padding: 0 0.3em; }
+
+    /* ── PRIX ── */
+    .price {
+      background: var(--ink);
+      color: var(--linen);
+      border-radius: 20px;
+      padding: 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    .price .label { color: var(--blue-light); }
+    .price h2 { font-size: clamp(1.8rem, 3.6vw, 2.4rem); margin-bottom: 1rem; }
+    .price-amount {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--blue-light);
+      margin-bottom: 0.4rem;
+    }
+    .price-note { color: #DCD6CA; margin-bottom: 2rem; }
+    .price h3 { font-size: 1.1rem; margin-bottom: 1.2rem; }
+    .price ul { list-style: none; display: grid; gap: 0.9rem; }
+    .price li {
+      padding: 0 0 0.9rem 2rem;
+      position: relative;
+      border-bottom: 1px solid rgba(245, 239, 227, 0.14);
+      color: #E9E3D7;
+    }
+    .price li:last-child { border-bottom: none; padding-bottom: 0; }
+    .price li::before {
+      content: "✓";
+      position: absolute; left: 0; top: 0;
+      color: var(--blue-light);
+      font-weight: 700;
+    }
+
+    /* ── FAQ ── */
+    .faq { display: grid; gap: 1rem; max-width: 50rem; }
+    .faq details {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0 1.8rem;
+    }
+    .faq summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1.4rem 0;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary h3 { font-size: 1.12rem; }
+    .faq summary::after {
+      content: "+";
+      flex-shrink: 0;
+      font-family: 'Archivo', sans-serif;
+      font-size: 1.5rem;
+      color: var(--blue);
+      transition: transform 0.2s;
+    }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { color: var(--ink-soft); padding-bottom: 1.5rem; }
+
+    /* ── CTA FINAL ── */
+    .final {
+      text-align: center;
+      padding: 7rem 0 5rem;
+    }
+    .final h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); max-width: 22ch; margin: 0 auto 1rem; }
+    .final p { color: var(--ink-soft); font-size: 1.1rem; margin-bottom: 2.2rem; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 1rem; flex-wrap: wrap;
+      padding-top: 1.8rem; padding-bottom: 1.8rem;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+    }
+    .footer-links { display: flex; gap: 1.8rem; flex-wrap: wrap; }
+    .footer-links a { color: var(--ink-soft); text-decoration: none; }
+    .footer-links a:hover { color: var(--blue); text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .case, .price { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 700px) {
+      body { font-size: 1rem; }
+      .wrap { padding: 0 16px; }
+      .nav-links { display: none; }
+      .hero { padding-top: 16px; }
+      .hero-box { padding: 3rem 1.5rem; border-radius: 16px; }
+      .hero-sub { font-size: 1.08rem; }
+      section { padding-top: 4.5rem; }
+      .section-head { margin-bottom: 2rem; }
+      .card { padding: 1.6rem; }
+      .steps { grid-template-columns: 1fr; }
+      .about { grid-template-columns: 1fr; padding: 1.6rem; gap: 1.8rem; }
+      .about img { max-width: 220px; }
+      .stats { gap: 1.6rem; }
+      .stat-num { font-size: 1.9rem; }
+      .case { padding: 1.6rem; }
+      .case blockquote { font-size: 1.12rem; padding-left: 1rem; }
+      .price { padding: 2.2rem 1.5rem; border-radius: 16px; }
+      .faq details { padding: 0 1.2rem; }
+      .final { padding: 5rem 0 3.5rem; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav aria-label="Navigation principale">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Mathis Tallec, retour au site">MT</a>
+    <ul class="nav-links">
+      <li><a href="#livrables">L'offre</a></li>
+      <li><a href="#methode">La méthode</a></li>
+      <li><a href="#prix">Prix</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn" href="mailto:mathistallec8@gmail.com?subject=Kit%20SDR%20%E2%80%93%20R%C3%A9server%2020%20min">Réserver 20 min</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- 1. HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-box">
+        <span class="label">Kit SDR · Pour les fondateurs de startups B2B</span>
+        <h1>Vos SDR posent plus de RDV dès la semaine prochaine.</h1>
+        <p class="hero-sub">
+          <strong>Un copilote d'appel branché à votre CRM.</strong>
+          <strong>Un playbook à votre nom.</strong>
+          <strong>Une formation terrain.</strong>
+          Tout est prêt en une à deux semaines.
+        </p>
+        <a class="btn btn-light" href="mailto:mathistallec8@gmail.com?subject=Kit%20SDR%20%E2%80%93%20R%C3%A9server%2020%20min">Réserver 20 min</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. LE PROBLÈME -->
+  <section id="probleme" aria-labelledby="probleme-titre">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">Le problème</span>
+        <h2 id="probleme-titre">Vos SDR ont du volume. Pas encore de méthode.</h2>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <span class="num" aria-hidden="true">01</span>
+          <h3>Ils improvisent au téléphone</h3>
+          <p>Pas de trame claire. Chaque appel dépend de l'humeur du jour. Les objections tombent, les RDV aussi.</p>
+        </article>
+        <article class="card">
+          <span class="num" aria-hidden="true">02</span>
+          <h3>Le CRM est mal rempli</h3>
+          <p>Issues d'appel oubliées, relances perdues, pipeline flou. Vous pilotez à l'aveugle.</p>
+        </article>
+        <article class="card">
+          <span class="num" aria-hidden="true">03</span>
+          <h3>Chaque recrue repart de zéro</h3>
+          <p>Un nouveau SDR met des semaines à être opérationnel. Sans support écrit, tout repose sur vous.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CE QUE JE LIVRE -->
+  <section id="livrables" aria-labelledby="livrables-titre">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">Ce que je livre</span>
+        <h2 id="livrables-titre">Trois outils. Une seule méthode.</h2>
+        <p>Vos SDR savent quoi dire, quoi noter et pourquoi. Dès le premier appel.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <span class="num" aria-hidden="true">01</span>
+          <h3>Copilote d'appel</h3>
+          <ul>
+            <li>Le script s'affiche pendant l'appel et suit la conversation.</li>
+            <li>Chaque issue d'appel (RDV, messagerie, rappel, refus) met à jour HubSpot en un clic.</li>
+            <li>Un mode démo est inclus pour s'entraîner sans risque.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="num" aria-hidden="true">02</span>
+          <h3>Playbook SDR personnalisé</h3>
+          <p>Une trentaine de slides à votre nom :</p>
+          <ul>
+            <li>Mission, offre et personas.</li>
+            <li>Méthode d'appel et objections.</li>
+            <li>Objectifs, routine et règles CRM.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="num" aria-hidden="true">03</span>
+          <h3>Formation de 2 h</h3>
+          <ul>
+            <li>La méthode douleur → impact → projection.</li>
+            <li>La posture haute au téléphone.</li>
+            <li>Le traitement des objections.</li>
+            <li>Des jeux de rôle sur vos vrais cas.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. LA MÉTHODE -->
+  <section id="methode" aria-labelledby="methode-titre">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">La méthode</span>
+        <h2 id="methode-titre">Quatre étapes. Pas de tunnel.</h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num" aria-hidden="true">1</span>
+          <h3>Appel de cadrage</h3>
+          <span class="duration">30 min</span>
+          <p>Votre offre, vos cibles, vos SDR, vos chiffres actuels.</p>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">2</span>
+          <h3>Construction</h3>
+          <span class="duration">1 semaine</span>
+          <p>Je construis le playbook et je configure le copilote.</p>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">3</span>
+          <h3>Formation de l'équipe</h3>
+          <span class="duration">2 h</span>
+          <p>Méthode, posture, objections. Puis pratique.</p>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">4</span>
+          <h3>Point à 30 jours</h3>
+          <span class="duration">Sur les chiffres</span>
+          <p>On regarde ce qui a bougé et on ajuste.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 5. QUI JE SUIS -->
+  <section id="qui" aria-labelledby="qui-titre">
+    <div class="wrap">
+      <div class="about">
+        <img src="photo.png" alt="Portrait de Mathis Tallec" width="260" height="325">
+        <div>
+          <span class="label">Qui je suis</span>
+          <h2 id="qui-titre">Mathis Tallec, SDR B2B.</h2>
+          <p class="about-text">
+            Je passe mes journées au téléphone avec des décideurs.<br>
+            Ce kit, c'est ma méthode de terrain, mise par écrit.<br>
+            Vos SDR repartent avec ce qui marche, pas avec de la théorie.
+          </p>
+          <div class="stats">
+            <div>
+              <div class="stat-num">15 000+</div>
+              <div class="stat-label">appels passés</div>
+            </div>
+            <div>
+              <div class="stat-num">68</div>
+              <div class="stat-label">RDV posés</div>
+            </div>
+            <div>
+              <div class="stat-num">46 %</div>
+              <div class="stat-label">de conversion</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. RÉSULTATS -->
+  <section id="resultats" aria-labelledby="resultats-titre">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">Résultats</span>
+        <h2 id="resultats-titre">Cas client</h2>
+      </div>
+      <!-- À REMPLIR : nom du client, chiffres avant/après, citation réelle -->
+      <div class="case">
+        <div>
+          <h3><span class="ph">[Nom du client]</span></h3>
+          <p class="case-metric-label">RDV posés par mois</p>
+          <p class="case-metric"><span class="ph">[RDV avant → après]</span></p>
+        </div>
+        <figure>
+          <blockquote>
+            <p>« <span class="ph">[citation]</span> »</p>
+          </blockquote>
+          <figcaption><span class="ph">[Prénom Nom, fonction]</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. PRIX -->
+  <section id="prix" aria-labelledby="prix-titre">
+    <div class="wrap">
+      <!-- À REMPLIR : prix -->
+      <div class="price">
+        <div>
+          <span class="label">Prix</span>
+          <h2 id="prix-titre">Un forfait. Tout compris.</h2>
+          <p class="price-amount">À partir de [___] €</p>
+          <p class="price-note">Selon la taille de l'équipe. Devis clair après l'appel de cadrage.</p>
+          <a class="btn btn-light" href="mailto:mathistallec8@gmail.com?subject=Kit%20SDR%20%E2%80%93%20R%C3%A9server%2020%20min">Réserver 20 min</a>
+        </div>
+        <div>
+          <h3>Inclus dans le Kit SDR</h3>
+          <ul>
+            <li>Appel de cadrage de 30 min</li>
+            <li>Copilote d'appel configuré sur votre HubSpot, mode démo inclus</li>
+            <li>Playbook SDR personnalisé d'une trentaine de slides</li>
+            <li>Formation de 2 h pour votre équipe, jeux de rôle compris</li>
+            <li>Point à 30 jours sur les chiffres</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ -->
+  <section id="faq" aria-labelledby="faq-titre">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">FAQ</span>
+        <h2 id="faq-titre">Les questions qu'on me pose</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary><h3>Il faut HubSpot ?</h3></summary>
+          <p>Idéalement, oui : le copilote met HubSpot à jour en un clic. Sans HubSpot, le playbook et la formation fonctionnent seuls.</p>
+        </details>
+        <details>
+          <summary><h3>Combien de temps ?</h3></summary>
+          <p>Une à deux semaines entre l'appel de cadrage et la formation.</p>
+        </details>
+        <details>
+          <summary><h3>Pour combien de SDR ?</h3></summary>
+          <p>De 1 à 10 SDR.</p>
+        </details>
+        <details>
+          <summary><h3>Et après ?</h3></summary>
+          <p>Un point à 30 jours est inclus. On regarde les chiffres et on ajuste ce qui doit l'être.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CTA FINAL -->
+  <section class="final" aria-labelledby="final-titre">
+    <div class="wrap">
+      <h2 id="final-titre">20 minutes pour voir si le kit colle à votre équipe.</h2>
+      <p>Pas de démo commerciale. On parle de vos SDR et de vos chiffres.</p>
+      <a class="btn" href="mailto:mathistallec8@gmail.com?subject=Kit%20SDR%20%E2%80%93%20R%C3%A9server%2020%20min">Réserver 20 min</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 Mathis Tallec</span>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/mathis-tallec" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:mathistallec8@gmail.com">mathistallec8@gmail.com</a>
+      <a href="index.html">← Retour au site</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
