@@ -223,7 +223,6 @@
     .shot:hover img { transform: scale(1.03); }
     .shot-fig { margin: 0; }
     .shot-cap { margin-top: 0.5rem; font-size: 0.8rem; color: var(--ink-soft); }
-    .price .shot-cap { color: #B9C3D4; margin-bottom: 2rem; }
     .shot-hint {
       position: absolute; right: 8px; bottom: 8px;
       background: var(--ink);
@@ -233,9 +232,6 @@
       padding: 0.2rem 0.6rem;
       border-radius: 999px;
     }
-    .price .shot-fig { max-width: 30rem; }
-    .price .shot { border-color: rgba(141, 179, 220, 0.35); }
-    .price .shot img { aspect-ratio: 16 / 9; }
 
     .lightbox {
       border: none;
@@ -357,42 +353,100 @@
     .case figcaption { margin-top: 1rem; color: var(--ink-soft); font-size: 0.95rem; }
     .ph { background: #E4ECF5; color: var(--ink); border-radius: 6px; padding: 0 0.3em; }
 
-    /* ── PRIX ── */
-    .price {
-      background: var(--ink);
-      color: var(--linen);
-      border-radius: 20px;
-      padding: 4rem;
+    /* ── TARIFS ── */
+    .packs {
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 3.5rem;
-      align-items: start;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+      align-items: stretch;
     }
-    .price .label { color: var(--blue-light); }
-    .price h2 { font-size: clamp(1.8rem, 3.6vw, 2.4rem); margin-bottom: 1rem; }
-    .price-amount {
+    .pack {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.2rem 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .pack-featured {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--linen);
+      box-shadow: 0 18px 40px rgba(20, 33, 61, 0.22);
+    }
+    .pack-head { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; min-height: 1.9rem; }
+    .pack-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+    .pack-featured .pack-name { color: var(--blue-light); }
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--blue-light);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 0.3rem 0.7rem;
+      white-space: nowrap;
+    }
+    .pack-price {
       font-family: 'Archivo', sans-serif;
       font-weight: 800;
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      color: var(--blue-light);
-      margin-bottom: 0.4rem;
+      font-size: clamp(2.4rem, 4vw, 3.1rem);
+      line-height: 1;
+      margin-top: 1.2rem;
     }
-    .price-note { color: #DCD6CA; margin-bottom: 2rem; }
-    .price h3 { font-size: 1.1rem; margin-bottom: 1.2rem; }
-    .price ul { list-style: none; display: grid; gap: 0.9rem; }
-    .price li {
-      padding: 0 0 0.9rem 2rem;
-      position: relative;
-      border-bottom: 1px solid rgba(245, 239, 227, 0.14);
-      color: #E9E3D7;
+    .pack-was { font-size: 0.88rem; color: var(--ink-soft); margin-top: 0.4rem; }
+    .pack-pitch {
+      color: var(--ink-soft);
+      margin-top: 1.1rem;
+      padding-bottom: 1.3rem;
+      border-bottom: 1px solid var(--border);
     }
-    .price li:last-child { border-bottom: none; padding-bottom: 0; }
-    .price li::before {
+    .pack-featured .pack-was, .pack-featured .pack-pitch { color: #C3CEE0; }
+    .pack-featured .pack-pitch { border-bottom-color: #2F4470; }
+    .pack-list { list-style: none; display: grid; gap: 0.6rem; margin: 1.3rem 0 2rem; }
+    .pack-list li { padding-left: 1.6rem; position: relative; }
+    .pack-list li::before {
       content: "✓";
       position: absolute; left: 0; top: 0;
-      color: var(--blue-light);
+      color: var(--blue);
       font-weight: 700;
     }
+    .pack-featured .pack-list li::before { color: var(--blue-light); }
+    .pack .btn { margin-top: auto; align-self: flex-start; }
+
+    .carte-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+      margin: 4rem 0 1rem;
+    }
+    .carte-head h3 { font-size: clamp(1.5rem, 3vw, 1.9rem); font-weight: 800; }
+    .carte-head p { color: var(--ink-soft); font-size: 0.9rem; }
+    .carte {
+      list-style: none;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.4rem 1.8rem;
+    }
+    .carte li {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .carte li:last-child { border-bottom: none; }
+    .carte-item b { font-weight: 600; }
+    .carte-item span { color: var(--ink-soft); }
+    .carte-price { font-weight: 600; white-space: nowrap; }
+    .carte-price.free { color: var(--blue); }
+    .tarifs-note { margin-top: 1.2rem; font-size: 0.88rem; color: var(--ink-soft); }
+    .tarifs-dl { margin-top: 0.5rem; font-size: 0.88rem; }
 
     /* ── FAQ ── */
     .faq { display: grid; gap: 1rem; max-width: 50rem; }
@@ -446,7 +500,8 @@
     @media (max-width: 960px) {
       .grid-3 { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr 1fr; }
-      .case, .price { grid-template-columns: 1fr; gap: 2rem; }
+      .case { grid-template-columns: 1fr; gap: 2rem; }
+      .packs { grid-template-columns: 1fr; max-width: 34rem; }
       .hero-box { grid-template-columns: 1fr; gap: 2.5rem; }
     }
     @media (max-width: 760px) {
@@ -472,7 +527,10 @@
       .stat-num { font-size: 1.9rem; }
       .case { padding: 1.6rem; }
       .case blockquote { font-size: 1.12rem; padding-left: 1rem; }
-      .price { padding: 2.2rem 1.5rem; border-radius: 16px; }
+      .pack { padding: 1.8rem 1.4rem; }
+      .carte { padding: 0.2rem 1.1rem; }
+      .carte li { flex-direction: column; gap: 0.2rem; }
+      .carte-head { margin-top: 3rem; }
       .faq details { padding: 0 1.2rem; }
       .final { padding: 5rem 0 3.5rem; }
       .footer-inner { flex-direction: column; text-align: center; }
@@ -489,7 +547,7 @@
     <ul class="nav-links">
       <li><a href="#livrables">L'offre</a></li>
       <li><a href="#methode">La méthode</a></li>
-      <li><a href="#prix">Prix</a></li>
+      <li><a href="#tarifs">Tarifs</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <a class="btn" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2hLGOZ48XURxFeKx0nXnnbvf43qKAxP4Tsn4fn3cnjydx6APBFtcGRXYA1EzfCvGqKsUWGVW74" target="_blank" rel="noopener">Réserver 30 min</a>
@@ -700,36 +758,75 @@
     </div>
   </section>
 
-  <!-- 7. PRIX -->
-  <section id="prix" aria-labelledby="prix-titre">
+  <!-- 7. TARIFS -->
+  <section id="tarifs" aria-labelledby="tarifs-titre">
     <div class="wrap">
-      <!-- À REMPLIR : prix -->
-      <div class="price">
-        <div>
-          <span class="label">Prix</span>
-          <h2 id="prix-titre">Un forfait. Tout compris.</h2>
-          <p class="price-amount">À partir de [___] €</p>
-          <p class="price-note">Selon la taille de l'équipe. Devis clair après l'appel de cadrage.</p>
-          <figure class="shot-fig">
-          <a class="shot" href="img/playbook-cover.png" data-zoom aria-label="Agrandir la couverture du playbook">
-            <img src="img/playbook-cover.png" alt="Couverture du playbook SDR, personnalisée au nom du client" width="1440" height="810" loading="lazy">
-            <span class="shot-hint" aria-hidden="true">Agrandir</span>
-          </a>
-          <figcaption class="shot-cap">Exemple fictif</figcaption>
-          </figure>
-          <a class="btn btn-light" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2hLGOZ48XURxFeKx0nXnnbvf43qKAxP4Tsn4fn3cnjydx6APBFtcGRXYA1EzfCvGqKsUWGVW74" target="_blank" rel="noopener">Réserver 30 min</a>
-        </div>
-        <div>
-          <h3>Inclus dans le Kit SDR</h3>
-          <ul>
-            <li>Appel de cadrage de 30 min</li>
-            <li>Copilote d'appel configuré sur votre HubSpot, mode démo inclus</li>
-            <li>Playbook SDR personnalisé de ~30 slides</li>
-            <li>Formation de 2 h pour votre équipe, jeux de rôle compris</li>
+      <div class="section-head">
+        <span class="label">Tarifs · grille 2026</span>
+        <h2 id="tarifs-titre">Trois packs. Prix fixes.</h2>
+      </div>
+      <div class="packs">
+        <article class="pack">
+          <div class="pack-head">
+            <h3 class="pack-name">Essentiel</h3>
+          </div>
+          <p class="pack-price">450&nbsp;€</p>
+          <p class="pack-was">HT · au lieu de 500&nbsp;€ à la carte</p>
+          <p class="pack-pitch">Pour lancer une équipe sur la bonne méthode.</p>
+          <ul class="pack-list">
+            <li>Formation de 2 h, méthode + jeux de rôle</li>
+            <li>Kit jeu de rôle personnalisé</li>
+            <li>Jusqu’à 5 SDR</li>
+          </ul>
+          <a class="btn" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2hLGOZ48XURxFeKx0nXnnbvf43qKAxP4Tsn4fn3cnjydx6APBFtcGRXYA1EzfCvGqKsUWGVW74" target="_blank" rel="noopener">Réserver 30 min</a>
+        </article>
+        <article class="pack pack-featured">
+          <div class="pack-head">
+            <h3 class="pack-name">Kit SDR</h3>
+            <span class="badge">Recommandé</span>
+          </div>
+          <p class="pack-price">990&nbsp;€</p>
+          <p class="pack-was">HT · au lieu de 1&nbsp;350&nbsp;€ à la carte</p>
+          <p class="pack-pitch">Tout pour que l’équipe tourne seule, outillée et formée.</p>
+          <ul class="pack-list">
+            <li>Playbook SDR à votre nom (~30 slides)</li>
+            <li>Copilote d’appel branché à HubSpot</li>
+            <li>Formation de 2 h + jeux de rôle</li>
+            <li>Kit jeu de rôle personnalisé</li>
             <li>Point à 30 jours sur les chiffres</li>
           </ul>
-        </div>
+          <a class="btn btn-light" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2hLGOZ48XURxFeKx0nXnnbvf43qKAxP4Tsn4fn3cnjydx6APBFtcGRXYA1EzfCvGqKsUWGVW74" target="_blank" rel="noopener">Réserver 30 min</a>
+        </article>
+        <article class="pack">
+          <div class="pack-head">
+            <h3 class="pack-name">Kit SDR + Suivi</h3>
+          </div>
+          <p class="pack-price">1&nbsp;290&nbsp;€</p>
+          <p class="pack-was">HT · au lieu de 1&nbsp;800&nbsp;€ à la carte</p>
+          <p class="pack-pitch">Le Kit SDR, puis 3 mois pour ancrer les réflexes.</p>
+          <ul class="pack-list">
+            <li>Tout le Kit SDR</li>
+            <li>3 séances mensuelles de jeu de rôle (1 h)</li>
+            <li>Fiches prospects mises à jour chaque mois</li>
+          </ul>
+          <a class="btn" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2hLGOZ48XURxFeKx0nXnnbvf43qKAxP4Tsn4fn3cnjydx6APBFtcGRXYA1EzfCvGqKsUWGVW74" target="_blank" rel="noopener">Réserver 30 min</a>
+        </article>
       </div>
+
+      <div class="carte-head">
+        <h3>À la carte</h3>
+        <p>Prix HT</p>
+      </div>
+      <ul class="carte">
+        <li><span class="carte-item"><b>Appel de cadrage</b> <span>· 30 min, votre équipe, vos chiffres</span></span><span class="carte-price free">Offert</span></li>
+        <li><span class="carte-item"><b>Formation de 2 h</b> <span>· méthode + jeux de rôle, jusqu’à 5 SDR</span></span><span class="carte-price">350&nbsp;€</span></li>
+        <li><span class="carte-item"><b>Kit jeu de rôle personnalisé</b> <span>· 4 fiches à vos personas + grille</span></span><span class="carte-price">150&nbsp;€</span></li>
+        <li><span class="carte-item"><b>Playbook SDR personnalisé</b> <span>· ~30 slides à votre nom</span></span><span class="carte-price">400&nbsp;€</span></li>
+        <li><span class="carte-item"><b>Copilote d’appel configuré</b> <span>· votre script + votre HubSpot</span></span><span class="carte-price">450&nbsp;€</span></li>
+        <li><span class="carte-item"><b>Séance de jeu de rôle mensuelle</b> <span>· 1 h, en visio ou sur place</span></span><span class="carte-price">150&nbsp;€ / mois</span></li>
+      </ul>
+      <p class="tarifs-note">Prix HT. TVA non applicable, art. 293 B du CGI. Devis définitif après l'appel de cadrage.</p>
+      <p class="tarifs-dl"><a href="img/grille-tarifaire-kit-sdr.png" download>Télécharger la grille (PNG)</a></p>
     </div>
   </section>
 
@@ -755,7 +852,7 @@
         </details>
         <details>
           <summary><h3>Et après ?</h3></summary>
-          <p>Un point à 30 jours est inclus. On regarde les chiffres et on ajuste ce qui doit l'être.</p>
+          <p>Point à 30 jours inclus dans le Kit SDR. En option : une séance de jeu de rôle mensuelle (150&nbsp;€/mois) ou le pack Kit SDR + Suivi.</p>
         </details>
       </div>
     </div>
